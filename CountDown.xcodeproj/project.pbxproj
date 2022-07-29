@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5C0DCF528941388008CAAD4 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0DCF428941388008CAAD4 /* BlankView.swift */; };
+		E5CF2B9D28941B9700DCA170 /* ListRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF2B9C28941B9700DCA170 /* ListRowItemView.swift */; };
+		E5CF2B9F28941FB400DCA170 /* CheckBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF2B9E28941FB400DCA170 /* CheckBoxStyle.swift */; };
+		E5CF2BA12894250A00DCA170 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF2BA02894250A00DCA170 /* SoundPlayer.swift */; };
 		E5D4ED522892C4F600BBC7E4 /* CountDownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D4ED512892C4F600BBC7E4 /* CountDownApp.swift */; };
 		E5D4ED542892C4F600BBC7E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D4ED532892C4F600BBC7E4 /* ContentView.swift */; };
 		E5D4ED562892C4F900BBC7E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D4ED552892C4F900BBC7E4 /* Assets.xcassets */; };
@@ -23,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E5C0DCF428941388008CAAD4 /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
+		E5CF2B9C28941B9700DCA170 /* ListRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowItemView.swift; sourceTree = "<group>"; };
+		E5CF2B9E28941FB400DCA170 /* CheckBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxStyle.swift; sourceTree = "<group>"; };
+		E5CF2BA02894250A00DCA170 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		E5D4ED4E2892C4F600BBC7E4 /* CountDown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D4ED512892C4F600BBC7E4 /* CountDownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownApp.swift; sourceTree = "<group>"; };
 		E5D4ED532892C4F600BBC7E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +124,8 @@
 				E5D4ED532892C4F600BBC7E4 /* ContentView.swift */,
 				E5D4ED7B2892E2DD00BBC7E4 /* BackgroundImageView.swift */,
 				E5D4ED7D2892E39D00BBC7E4 /* NewTaskItemView.swift */,
+				E5C0DCF428941388008CAAD4 /* BlankView.swift */,
+				E5CF2B9C28941B9700DCA170 /* ListRowItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -124,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D4ED772892D4CE00BBC7E4 /* constant.swift */,
+				E5CF2BA02894250A00DCA170 /* SoundPlayer.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -131,6 +142,7 @@
 		E5D4ED702892CED200BBC7E4 /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				E5CF2B9E28941FB400DCA170 /* CheckBoxStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -221,9 +233,13 @@
 				E5D4ED7C2892E2DD00BBC7E4 /* BackgroundImageView.swift in Sources */,
 				E5D4ED542892C4F600BBC7E4 /* ContentView.swift in Sources */,
 				E5D4ED7A2892DA8700BBC7E4 /* HideKeyboardExtension.swift in Sources */,
+				E5C0DCF528941388008CAAD4 /* BlankView.swift in Sources */,
 				E5D4ED782892D4CE00BBC7E4 /* constant.swift in Sources */,
+				E5CF2B9D28941B9700DCA170 /* ListRowItemView.swift in Sources */,
 				E5D4ED522892C4F600BBC7E4 /* CountDownApp.swift in Sources */,
+				E5CF2B9F28941FB400DCA170 /* CheckBoxStyle.swift in Sources */,
 				E5D4ED5E2892C4F900BBC7E4 /* CountDown.xcdatamodeld in Sources */,
+				E5CF2BA12894250A00DCA170 /* SoundPlayer.swift in Sources */,
 				E5D4ED7E2892E39D00BBC7E4 /* NewTaskItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
