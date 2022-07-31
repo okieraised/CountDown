@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @State var task: String = ""
+    @State var dueDate: Date = Date.init()
     @State private var showNewTaskItem: Bool = false
     @State private var showSettingsView: Bool = false
     
@@ -80,9 +81,6 @@ struct ContentView: View {
                                 .frame(width: 24, height: 24)
                                 .font(.system(.title, design: .rounded))
                         })
-                        .sheet(isPresented: $showSettingsView) {
-                            SettingsView()
-                        }
 
                     }
                     .padding()
@@ -117,10 +115,12 @@ struct ContentView: View {
                     }
                     .listStyle(InsetGroupedListStyle())
                     .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 12)
-                    .padding(.vertical, 0)
+                    .padding(.vertical, 8)
                     .frame(maxWidth: 640)
+                    .cornerRadius(12)
                 }
                 .blur(radius: showNewTaskItem ? 8.0 : 0, opaque: false)
+                .blur(radius: showSettingsView ? 8.0 : 0, opaque: false)
                 .transition(.move(edge: .bottom))
                 .animation(.easeOut(duration: 0.5), value: 0.5)
                 
@@ -133,15 +133,26 @@ struct ContentView: View {
                                 showNewTaskItem = false
                             }
                         }
-                    
                     NewTaskItemView(isShowing: $showNewTaskItem)
+                }
+                
+                if showSettingsView {
+                    BlankView(
+                        backgroundColor: isDarkMode ? Color.black : Color.gray,
+                        backgroundOpacity: isDarkMode ? 0.3 : 0.5)
+                        .onTapGesture {
+                            withAnimation() {
+                                showSettingsView = false
+                            }
+                        }
+                    SettingsView(isShowing: $showSettingsView)
                 }
                 
             }
             .onAppear() {
                 UITableView.appearance().backgroundColor = UIColor.clear
             }
-            .navigationBarTitle("Daily Tasks", displayMode: .large)
+            .navigationBarTitle("Countdown", displayMode: .large)
             .navigationBarHidden(true)
             .background(
                 BackgroundImageView()

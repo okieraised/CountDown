@@ -12,6 +12,7 @@ struct NewTaskItemView: View {
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @Environment(\.managedObjectContext) private var viewContext
     @State private var task: String = ""
+    @State private var dueDate: Date = Date.init()
     @Binding var isShowing: Bool
     
     private var isButtonDisabled: Bool {
@@ -23,8 +24,10 @@ struct NewTaskItemView: View {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
             newItem.task = task
+            newItem.countdown = dueDate
             newItem.completion = false
             newItem.id = UUID()
+            print(dueDate)
 
             do {
                 try viewContext.save()
@@ -45,7 +48,7 @@ struct NewTaskItemView: View {
             Spacer()
             
             VStack(spacing: 16) {
-                TextField("New task", text: $task)
+                TextField("New countdown", text: $task)
                     .foregroundColor(.pink)
                     .font(.system(size: 24, weight: .bold, design: .rounded))
                     .padding()
@@ -53,6 +56,19 @@ struct NewTaskItemView: View {
                         isDarkMode ? Color(UIColor.tertiarySystemBackground) : Color(UIColor.secondarySystemBackground)
                     )
                     .cornerRadius(10)
+                
+                
+                DatePicker("Date", selection: $dueDate, displayedComponents: [.date])
+                    .datePickerStyle(WheelDatePickerStyle())
+                    .frame(maxHeight: 200)
+                    .font(.system(size: 24, weight: .bold, design: .rounded))
+                    .background(
+                        isDarkMode ? Color(UIColor.tertiarySystemBackground) : Color(UIColor.secondarySystemBackground)
+                    )
+                   .labelsHidden()
+                   .cornerRadius(10)
+                
+                                    
                 
                 Button(action: {
                     addItem()
@@ -73,7 +89,7 @@ struct NewTaskItemView: View {
                 }
                 .padding()
                 .foregroundColor(.white)
-                .background(isButtonDisabled ? Color.blue : Color.pink)
+                .background(isButtonDisabled ? Color.gray : Color.pink)
                 .cornerRadius(10)
             }
             .padding(.horizontal)

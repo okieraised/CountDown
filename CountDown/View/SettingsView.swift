@@ -11,7 +11,9 @@ struct SettingsView: View {
     
     // MARK - Properties
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
+    @Binding var isShowing: Bool
     
     // MARK - Body
     var body: some View {
@@ -29,6 +31,7 @@ struct SettingsView: View {
                         Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
                             playSound(sound: "sound-tap", type: "mp3")
+                            isShowing = false
                         }) {
                             ZStack {
                                 Image(systemName: "xmark.square")
@@ -43,22 +46,24 @@ struct SettingsView: View {
                         
                     }
                     .padding()
+                    Group {
+                        FormRowStaticView(icon: "gear", firstText: "Application", secondText: "Count Down")
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                        FormRowStaticView(icon: "checkmark.seal", firstText: "Compatibility", secondText: "iPhone")
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                        FormRowStaticView(icon: "keyboard", firstText: "Developer", secondText: "Tri Pham")
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                        FormRowStaticView(icon: "paintbrush", firstText: "Designer", secondText: "Tri Pham")
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                        FormRowStaticView(icon: "flag", firstText: "Version", secondText: "1.0.0")
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                    }
                     
-                    FormRowStaticView(icon: "gear", firstText: "Application", secondText: "Count Down")
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                    FormRowStaticView(icon: "checkmark.seal", firstText: "Compatibility", secondText: "iPhone")
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                    FormRowStaticView(icon: "keyboard", firstText: "Developer", secondText: "Tri Pham")
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                    FormRowStaticView(icon: "paintbrush", firstText: "Designer", secondText: "Tri Pham")
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                    FormRowStaticView(icon: "flag", firstText: "Version", secondText: "1.0.0")
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
                     
                     // Mark Footer
                     Text("For a beautiful and a very special person to me,\nPhuong Nguyen")
@@ -69,9 +74,6 @@ struct SettingsView: View {
                         .foregroundColor(Color.secondary)
                     
                 }//.VStack
-    //            .frame(minHeight: 0, maxHeight: .infinity)
-    //            .padding(.horizontal)
-    //            .padding(.vertical, 20)
                 .background(
                     isDarkMode ? Color(UIColor.secondarySystemBackground) : Color.white
                 )
@@ -86,7 +88,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(isShowing: .constant(true))
             .background(Color.gray.edgesIgnoringSafeArea(.all))
     }
 }
