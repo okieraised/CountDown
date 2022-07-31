@@ -13,6 +13,7 @@ struct ContentView: View {
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @State var task: String = ""
     @State private var showNewTaskItem: Bool = false
+    @State private var showSettingsView: Bool = false
     
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -41,8 +42,8 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 VStack {
-                    HStack(spacing: 10) {
-                        Text("Count Down")
+                    HStack(spacing: 5) {
+                        Text("Countdown")
                             .font(.system(.largeTitle, design: .rounded))
                             .fontWeight(.heavy)
                             .padding(.leading, 4)
@@ -67,6 +68,22 @@ struct ContentView: View {
                                 .frame(width: 24, height: 24)
                                 .font(.system(.title, design: .rounded))
                         })
+                        
+                        Button(action: {
+                            showSettingsView = true
+                            playSound(sound: "sound-tap", type: "mp3")
+                            feedback.notificationOccurred(.success)
+                        }, label: {
+                            
+                            Image(systemName: isDarkMode ? "gearshape.fill" : "gearshape")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .font(.system(.title, design: .rounded))
+                        })
+                        .sheet(isPresented: $showSettingsView) {
+                            SettingsView()
+                        }
+
                     }
                     .padding()
                     .foregroundColor(.white)
@@ -80,7 +97,7 @@ struct ContentView: View {
                     }, label: {
                         Image(systemName: "plus.circle")
                             .font(.system(size: 30, weight: .semibold, design: .rounded))
-                        Text("New Task")
+                        Text("New Countdown")
                             .font(.system(size: 24, weight: .bold, design: .rounded))
                     })
                     .foregroundColor(.white)
